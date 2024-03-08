@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Find Your Perfect Fit For The University Life | The Green Perch</title>
+	<title>Available Properties | The Green Perch</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,17 +23,14 @@
 
 	<?php
 	include 'templates/navbar.html';
-	include 'templates/home/header.html';
+	include 'templates/properties/header.html';
 	?>
 
 	<div class="flex containerBlock">
 		<div class="flex flexCol container">
 
 		<?php
-		include 'templates/home/map.html';
-		include 'templates/home/properties.html';
-		include 'templates/home/explaination.html';
-		include 'templates/home/blogs.html';
+		include 'templates/properties/properties.html';
 		?>
 
 		</div>
