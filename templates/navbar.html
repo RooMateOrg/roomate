@@ -8,21 +8,21 @@
 	<div class="flex navbar">
 		<span class="flex flexRow" style="width: 95%; align-items: center; justify-content: space-between;">
 			<div class="navbarLogo">
-				<a href="/roomate">
-					<img src="/roomate/assets/images/logo.png" alt="Roomate Logo" style="height: 40px; width: auto;">
+				<a href="/greenperch">
+					<img src="/greenperch/assets/images/logo.png" alt="Green Perch Logo" style="height: 40px; width: auto;">
 				</a>
 			</div>
 
 			<div class="flex flexRow navbarLinks">
-				<a href="/roomate">Home</a>
-				<a href="/roomate/about.php">About</a>
-				<a href="/roomate/contact.php">Contact</a>
+				<a href="/greenperch/available.php">Available Properties</a>
+				<a href="/greenperch/blogs.php">Blogs</a>
+				<a href="/greenperch/about.php">About</a>
 
 				<?php
 				if (isset($_SESSION['user'])) {
-					echo '<a href="/roomate/logout.php">Logout</a>';
+					echo '<a href="/greenperch/logout.php">Logout</a>';
 				} else {
-					echo '<a href="/roomate/login.php">Login</a>';
+					echo '<a href="/greenperch/login.php">Login</a>';
 				}
 				?>
 			</div>

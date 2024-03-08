@@ -5,7 +5,8 @@
 	--whiteGrey: #ECECEC;
 	--blackGrey: #242424;
 	--black: #000000;
-	--accent: #0162FF;
+	--accent: #38B64A;
+	--accent2: #19589D;
 }
 
 * {
@@ -18,6 +19,56 @@ html {
 	color: var(--blackGrey);
 	background: var(--whiteGrey);
 	scroll-behavior: smooth;
+}
+
+/* Buttons Start */
+button {
+	color: var(--whiteGrey);
+	background: var(--accent);
+	font-weight: 400;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	filter: brightness(100%);
+	padding: 8px 16px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+button:hover{
+	filter: brightness(105%);
+	transition: 0.3s;
+}
+.anchorBtn {
+	color: var(--white);
+	background: var(--accent);
+	font-weight: 400;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	filter: brightness(100%);
+	padding: 8px 16px;
+	cursor: pointer;
+	text-decoration: none;
+	transition: 0.3s;
+}
+.anchorBtn:hover{
+	text-decoration: none;
+	filter: brightness(105%);
+	transition: 0.3s;
+}
+/* Buttons End */
+
+
+a {
+	color: var(--accent);
+	font-weight: 600;
+	text-decoration: none;
+	text-underline-offset: 3px;
+	transition: 0.3s;
+}
+a:hover {
+	text-decoration: underline;
+	transition: 0.3s;
 }
 
 .flex {
@@ -39,6 +90,8 @@ html {
 .container {
 	height: auto;
 	width: 95%;
+	padding-bottom: 50px;
+	gap: 60px;
 }
 
 .navbar {
@@ -49,17 +102,74 @@ html {
 	justify-content: center;
 	position: sticky;
 	top: 0;
+	z-index: 5;
 	filter: drop-shadow(0px 4px 4px #42424212);
 }
 .navbarLinks {
 	gap: 40px;
 }
-.navbar a {
+.navbarLinks a {
+	color: var(--accent2);
+	background: transparent;
+	padding: 8px 16px;
+	border-radius: 10px;
 	text-decoration: none;
+	transition: 0.3s;
+}
+.navbarLinks a:hover {
+	background: var(--whiteGrey);
+	transition: 0.3s;
 }
 
 header {
 	align-items: center;
 	justify-content: center;
 	height: 60vh;
+}
+
+.card {
+	filter: drop-shadow(0 0 15px transparent) brightness(100%);
+	transition: 0.3s;
+}
+.card:hover {
+	filter: drop-shadow(0 0 15px #0001) brightness(110%);
+	transition: 0.3s;
+}
+
+
+footer {
+	height: auto;
+	width: 100%;
+	color: var(--blackGrey);
+	background: var(--white);
+}
+
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+	font-weight: 400;
+}
+footer h1 {
+	font-size: 20px;
+}
+
+.footerLinks span {
+	gap: 20px;
+}
+
+.footerLinks a {
+	width: fit-content;
+}
+
+#toTopBtn{
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background: var(--accent2);
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 5;
+	font-size: 20px;
+	width: 45px;
+	height: 45px;
+	padding: 0;
 }
