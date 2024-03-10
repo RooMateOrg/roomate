@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Property Name - Properties | The Green Perch</title>
+	<title>Blogs | The Green Perch</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,13 +23,14 @@
 
 	<?php
 	include 'templates/navbar.html';
+	include 'templates/blogs/header.html';
 	?>
 
 	<div class="flex containerBlock">
 		<div class="flex flexCol container">
 
 		<?php
-		include 'templates/properties/singleproperty.html';
+		include 'templates/blogs/blogs.html';
 		?>
 
 		</div>
