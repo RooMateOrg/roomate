@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+
+	<div class="flex flexCol" style="height: auto; width: 100%; gap: 35px;">
+		<h1 style="font-weight: 600;">Need Help?</h1>
+
+		<div class="flex flexRow card" style="color: var(--blackGrey); background: var(--white); height: 600px; width: 100%; border-radius: 15px;">
+
+			<div style="height: 100%; width: 35%;">
+				<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; background-position: center; border-radius: 15px 0 0 15px;">
+			</div>
+
+			<div class="flex flexCol" style="color: var(--blackGrey); background: var(--white); height: calc(100% - 50px); width: calc(65% - 50px); padding: 25px; gap: 15px; border-radius: 0 15px 15px 0;">
+				<form id="helpForm" class="flex flexCol" style="height: 100%; width: 100%; gap: 30px;" method="POST" action="https://script.google.com/macros/s/AKfycbyf2QL9TRT4Y7m8xQCcHIa6GBBMNqYmCELUQrjHXJnhrY8xD9QxyOvGJaE-HyOBdH9k/exec">
+					<span class="flex flexCol" style="gap: 5px;">
+						<h1 style="font-size: 24px; font-weight: 600;">Contact Us</h1>
+						<p style="font-size: 16px;">We are here to help you. Please fill out the form below and we will get back to you as soon as possible.</p>
+					</span>
+
+					<div class="flex flexCol" style="height: auto; width: 100%; gap: 20px;">
+						<input type="text" name="Name" placeholder="Name" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
+						<input type="email" name="Email" placeholder="Email" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
+						<input type="text" name="Subject" placeholder="Subject" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
+						<textarea name="Message" placeholder="Message" style="height: 150px; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px; resize: none;" required></textarea>
+					</div>
+
+					<span class="flex flexRow" style="width: 100%; align-items: center; justify-content: space-between;">
+						<button style="width: fit-content;" type="submit">Submit</button>
+						<span id="formMsgStatus" class="flex flexRow" style="color: var(--accent); font-size: 14px; font-weight: 400; align-items: center; gap: 10px;"></span>
+					</span>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
