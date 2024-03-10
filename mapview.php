@@ -57,31 +57,21 @@
 
 							<?php
 							$locations = [
-								['name' => 'Location 1', 'lat' => 48.8583701, 'lng' => 2.291901],
-								['name' => 'Location 2', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 3', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 4', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 5', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 6', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 7', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 8', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 9', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 10', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 11', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 12', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 13', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 14', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 15', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 16', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 17', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 18', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 19', 'lat' => -34.397, 'lng' => 150.644],
-								['name' => 'Location 20', 'lat' => -34.397, 'lng' => 150.644],
+								['name' => 'NSBM Green University Town Hostel Complex', 'placeId' => 'ChIJ-9uPlHZS4joRP6jpodvXrIk'],
+								['name' => 'M&M Hostel (Boys)', 'placeId' => 'ChIJobkzO3pS4joR23ZqGLhkGK8'],
+								['name' => 'DVS Boys Hostel', 'placeId' => 'ChIJq1sRXb9T4joR_zjZV6LBDeQ'],
+								['name' => 'Venaya Boys Hostel', 'placeId' => 'ChIJNR9SPSNT4joRTYUe6u03M5Y'],
+								['name' => 'Bodima', 'placeId' => 'ChIJl0aO0iFT4joRRdD_j7K9Sas'],
+								['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+								['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+								['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+								['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+								['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
 							];
 
 							echo '<ul id="locations">';
 							foreach ($locations as $location) {
-								echo '<li data-lat="' . $location['lat'] . '" data-lng="' . $location['lng'] . '">' . $location['name'] . '</li>';
+								echo '<li data-place-id="' . $location['placeId'] . '">' . $location['name'] . '</li>';
 							}
 							echo '</ul>';
 							?>
@@ -113,24 +103,28 @@
 		function initMap() {
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: {
-					lat: -34.397,
-					lng: 150.644
+					lat: 6.8213291,
+					lng: 80.0389926
 				},
-				zoom: 8
+				zoom: 14
 			});
+
+			var service = new google.maps.places.PlacesService(map);
 
 			var locations = document.querySelectorAll('#locations li');
 			locations.forEach(function(location) {
-				var lat = parseFloat(location.getAttribute('data-lat'));
-				var lng = parseFloat(location.getAttribute('data-lng'));
-				var marker = new google.maps.Marker({
-					position: {
-						lat: lat,
-						lng: lng
-					},
-					map: map
+				var placeId = location.getAttribute('data-place-id');
+				service.getDetails({
+					placeId: placeId
+				}, function(place, status) {
+					if (status === google.maps.places.PlacesServiceStatus.OK) {
+						var marker = new google.maps.Marker({
+							map: map,
+							position: place.geometry.location
+						});
+						markers.push(marker);
+					}
 				});
-				markers.push(marker);
 			});
 		}
 
@@ -144,7 +138,7 @@
 		});
 	</script>
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD57YgASGL9lgd-aHJXiQwJ1RKMjNtZfwU&callback=initMap"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD57YgASGL9lgd-aHJXiQwJ1RKMjNtZfwU&callback=initMap&libraries=places" async defer></script>
 
 </body>
 
