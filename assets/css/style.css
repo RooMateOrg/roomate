@@ -5,6 +5,9 @@
 	--whiteGrey: #ECECEC;
 	--blackGrey: #242424;
 	--black: #000000;
+	--green: #3DC951;
+	--yellow: #E8C300;
+	--red: #E30404;
 	--accent: #38B64A;
 	--accent2: #19589D;
 }
@@ -13,6 +16,7 @@
 	margin: 0;
 	padding: 0;
 	font-family: "Montserrat", sans-serif;
+	scrollbar-width: thin;
 }
 
 html {
@@ -54,6 +58,16 @@ button:hover{
 .anchorBtn:hover{
 	text-decoration: none;
 	filter: brightness(105%);
+	transition: 0.3s;
+}
+.approveBtn{
+	color: var(--whiteGrey);
+	background: var(--accent);
+	transition: 0.3s;
+}
+.rejectBtn{
+	color: var(--whiteGrey);
+	background: var(--red);
 	transition: 0.3s;
 }
 /* Buttons End */
