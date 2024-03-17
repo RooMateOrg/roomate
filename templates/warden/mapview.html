@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		#locations {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+		#locations li {
+			padding: 15px;
+			border-bottom: 1px solid #CCCCCC;
+			cursor: pointer;
+		}
+		#locations li:last-child {
+			border-bottom: none;
+		}
+		#locations li:hover {
+			background-color: #F6F6F6;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="flex" style="height: auto; width: 100%; gap: 50px;">
+
+		<div class="flex flexCol" style="height: auto; width: calc(100% - 60px); background: var(--white); padding: 30px; border: 1px solid #B0B0B0; border-radius: 10px; gap: 30px;">
+			<h1 style="font-size: 20px; font-weight: 500;">Property Map</h1>
+
+			<div class="flex flexRow" style="width: 100%; border: 1px solid #B0B0B0; border-radius: 10px;">
+				<div id="sidebar" style="height: auto; width: 25%; background: var(--white); border-radius: 10px 0 0 10px; overflow: auto;">
+					<div style="height: 600px; width: 100%;">
+
+						<?php
+						$locations = [
+							['name' => 'NSBM Green University Town Hostel Complex', 'placeId' => 'ChIJ-9uPlHZS4joRP6jpodvXrIk'],
+							['name' => 'M&M Hostel (Boys)', 'placeId' => 'ChIJobkzO3pS4joR23ZqGLhkGK8'],
+							['name' => 'DVS Boys Hostel', 'placeId' => 'ChIJq1sRXb9T4joR_zjZV6LBDeQ'],
+							['name' => 'Venaya Boys Hostel', 'placeId' => 'ChIJNR9SPSNT4joRTYUe6u03M5Y'],
+							['name' => 'Bodima', 'placeId' => 'ChIJl0aO0iFT4joRRdD_j7K9Sas'],
+							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
+						];
+
+						echo '<ul id="locations">';
+						foreach ($locations as $location) {
+							echo '<li data-place-id="' . $location['placeId'] . '">' . $location['name'] . '</li>';
+						}
+						echo '</ul>';
+						?>
+
+					</div>
+				</div>
+
+				<div id="map" style="height: 600px; width: 75%; border-radius: 0 10px 10px 0;"></div>
+			</div>
+		</div>
+
+	</div>
+
+	<script>
+		var map;
+		var markers = [];
+
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: {
+					lat: 6.8213291,
+					lng: 80.0389926
+				},
+				zoom: 14
+			});
+
+			var service = new google.maps.places.PlacesService(map);
+
+			var locations = document.querySelectorAll('#locations li');
+			locations.forEach(function(location) {
+				var placeId = location.getAttribute('data-place-id');
+				service.getDetails({
+					placeId: placeId
+				}, function(place, status) {
+					if (status === google.maps.places.PlacesServiceStatus.OK) {
+						var marker = new google.maps.Marker({
+							map: map,
+							position: place.geometry.location
+						});
+						markers.push(marker);
+					}
+				});
+			});
+		}
+
+		var locationsList = document.getElementById('locations');
+		locationsList.addEventListener('click', function(e) {
+			if (e.target.tagName === 'LI') {
+				var index = Array.prototype.indexOf.call(locationsList.children, e.target);
+				var marker = markers[index];
+				map.setCenter(marker.getPosition());
+			}
+		});
+	</script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD57YgASGL9lgd-aHJXiQwJ1RKMjNtZfwU&callback=initMap&libraries=places" defer></script>
+
+</body>
+
+</html>

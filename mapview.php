@@ -17,25 +17,6 @@
 	<script src="/greenperch/assets/js/script.js" defer></script>
 
 	<link rel="icon" href="/greenperch/assets/images/favicon.png">
-
-	<style>
-		#locations {
-			list-style-type: none;
-			padding: 0;
-			margin: 0;
-		}
-		#locations li {
-			padding: 15px;
-			border-bottom: 1px solid #CCCCCC;
-			cursor: pointer;
-		}
-		#locations li:last-child {
-			border-bottom: none;
-		}
-		#locations li:hover {
-			background-color: #F6F6F6;
-		}
-	</style>
 </head>
 
 <body>

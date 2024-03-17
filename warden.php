@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Dashboard - Admin | The Green Perch</title>
+	<title>Dashboard - Warden | The Green Perch</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +40,9 @@
 		</h1>
 
 		<?php
-		include 'templates/admin/viewlandlords.html';
+		include 'templates/warden/requests.html';
+		include 'templates/warden/mapview.html';
+		include 'templates/warden/viewlandlords.html';
 		?>
 
 		</div>
