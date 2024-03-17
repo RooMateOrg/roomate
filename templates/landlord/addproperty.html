@@ -10,12 +10,12 @@
 		<div class="flex flexCol" style="height: auto; width: calc(100% - 60px); background: var(--white); padding: 30px; border: 1px solid #B0B0B0; border-radius: 10px; gap: 30px;">
 			<h1 style="font-size: 20px; font-weight: 500;">Add New Property</h1>
 
-			<form class="flex flexCol" action="/greenperch/api/addproperty" method="POST" style="width: 100%; gap: 40px;">
+			<form class="flex flexCol" action="/greenperch/landlord/addproperty" method="POST" style="width: 100%; gap: 40px;">
 				<span class="flex flexRow" style="width: 100%; gap: 40px;">
 					<div class="flex flexCol" style="width: 50%; gap: 20px;">
 						<span class="flex flexCol" style="gap: 10px;">
 							<label style="color: #808080; font-weight: 500;">Property Images (Upto 4 Images):</label>
-							<input type="file" name="propertyImage1" id="propertyImage1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
+							<input type="file" name="propertyImage1" id="propertyImage1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;" required>
 							<input type="file" name="propertyImage2" id="propertyImage2" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
 							<input type="file" name="propertyImage3" id="propertyImage3" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
 							<input type="file" name="propertyImage4" id="propertyImage4" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
@@ -23,20 +23,20 @@
 
 						<span class="flex flexCol" style="gap: 10px;">
 							<label style="color: #808080; font-weight: 500;">Description:</label>
-							<textarea name="description" id="description" style="height: 300px; width: calc(100% - 20px); resize: none; padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;"></textarea>
+							<textarea name="description" id="description" placeholder="Enter brief description for the property" style="height: 300px; width: calc(100% - 20px); resize: none; font-size: 14px; padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required></textarea>
 						</span>
 					</div>
 
 					<div class="flex flexCol" style="width: 50%; gap: 20px;">
 						<span class="flex flexCol" style="gap: 10px;">
 							<label style="color: #808080; font-weight: 500;">Property Name:</label>
-							<input type="text" name="propertyName" id="propertyName" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;">
+							<input type="text" name="propertyName" id="propertyName" placeholder="Enter name for the property" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
 						</span>
 
 						<span class="flex flexRow" style="width: 100%; gap: 20px;">
 							<span class="flex flexCol" style="width: 50%; gap: 10px;">
 								<label style="color: #808080; font-weight: 500;">Category:</label>
-								<select name="category" id="category" style="height: auto; width: 100%; background: var(--white); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
+								<select name="category" id="category" style="height: auto; width: 100%; background: var(--white); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;" required>
 									<option value="Boys" selected>Boys</option>
 									<option value="Girls">Girls</option>
 									<option value="BothBoysAndGirls">Both Boys and Girls</option>
@@ -45,31 +45,31 @@
 
 							<span class="flex flexCol" style="width: 50%; gap: 10px;">
 								<label style="color: #808080; font-weight: 500;">Price:</label>
-								<input type="number" name="price" id="price" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;">
+								<input type="number" name="price" id="price" placeholder="Enter Price" min="1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
 							</span>
 						</span>
 
 						<span class="flex flexRow" style="width: 100%; gap: 20px;">
 							<span class="flex flexCol" style="width: 50%; gap: 10px;">
 								<label style="color: #808080; font-weight: 500;">Bedrooms:</label>
-								<input type="number" name="bedrooms" id="bedrooms" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;">
+								<input type="number" name="bedrooms" id="bedrooms" placeholder="Bedrooms Count" min="1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
 							</span>
 
 							<span class="flex flexCol" style="width: 50%; gap: 10px;">
 								<label style="color: #808080; font-weight: 500;">Bathrooms:</label>
-								<input type="number" name="bathrooms" id="bathrooms" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;">
+								<input type="number" name="bathrooms" id="bathrooms" placeholder="Bathrooms Count" min="1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
 							</span>
 						</span>
 
 						<span class="flex flexRow" style="width: 100%; gap: 20px;">
 							<span class="flex flexCol" style="width: 50%; gap: 10px;">
 								<label style="color: #808080; font-weight: 500;">Beds:</label>
-								<input type="number" name="beds" id="beds" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;">
+								<input type="number" name="beds" id="beds" placeholder="Beds Count" min="1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
 							</span>
 
 							<span class="flex flexCol" style="width: 50%; gap: 10px;">
 								<label style="color: #808080; font-weight: 500;">Availability:</label>
-								<select name="availability" id="availability" style="height: auto; width: 100%; background: var(--white); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
+								<select name="availability" id="availability" style="height: auto; width: 100%; background: var(--white); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;" required>
 									<option value="Available" selected>Available</option>
 									<option value="NotAvailable">Not Available</option>
 								</select>
@@ -83,7 +83,7 @@
 									<i class="fa-regular fa-circle-question"></i>
 								</abbr>:
 							</label>
-							<input type="text" name="placeID" id="placeID" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;">
+							<input type="text" name="placeID" id="placeID" placeholder="Enter Place ID" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
 							<iframe src="/greenperch/placeidmap.html" style="height: 300px; width: 100%; border: 1px solid #B0B0B0; border-radius: 5px;"></iframe>
 						</span>
 					</div>
