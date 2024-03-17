@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+
+	<div class="flex" style="height: auto; width: 100%; gap: 50px;">
+
+		<div class="flex flexCol" style="height: auto; width: calc(100% - 60px); background: var(--white); padding: 30px; border: 1px solid #B0B0B0; border-radius: 10px; gap: 30px;">
+			<h1 style="font-size: 20px; font-weight: 500;">New User</h1>
+
+			<div class="flex" style="height: auto; width: 100%;">
+				<form class="flex flexCol" style="height: auto; width: 100%; align-items: center; gap: 25px;">
+
+					<span class="flex flexCol" style="width: 100%; gap: 10px;">
+						<label style="color: #808080; font-weight: 500;">Category:</label>
+						<select name="category" id="category" style="height: auto; width: 100%; background: var(--white); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;" required>
+							<option value="Landlord" selected>Landlord</option>
+							<option value="Warden">Warden</option>
+							<option value="Student">Student</option>
+						</select>
+					</span>
+
+					<span class="flex flexCol" style="width: 100%; gap: 10px;">
+						<label style="color: #808080; font-weight: 500;">Name:</label>
+						<input type="text" name="fullName" id="fullName" placeholder="Enter Name" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+					</span>
+
+					<span class="flex flexCol" style="width: 100%; gap: 10px;">
+						<label style="color: #808080; font-weight: 500;">Email:</label>
+						<input type="email" name="email" id="email" placeholder="Enter Email" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+					</span>
+
+					<span class="flex flexCol" style="width: 100%; gap: 10px;">
+						<label style="color: #808080; font-weight: 500;">Phone Number:</label>
+						<input type="tel" name="telephone" id="telephone" maxlength="10" placeholder="Enter Phone Number" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+					</span>
+
+					<span class="flex flexCol" style="width: 100%; gap: 10px;">
+						<label style="color: #808080; font-weight: 500;">Password:</label>
+						<input type="password" name="password" id="password" placeholder="Enter Password" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+					</span>
+
+					<div class="flex" style="width: 100%; justify-content: end;">
+						<button type="submit" style="height: auto; width: 100px; padding: 10px; border: none; border-radius: 5px; background: var(--green); color: var(--white); font-weight: 500; cursor: pointer;">Add User</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

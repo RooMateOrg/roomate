@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		table th {
+			background: #ECECEC;
+		}
+		table th, table td {
+			padding: 15px;
+		}
+		table tr {
+			text-align: center;
+			background: #FFFFFF;
+			transition: 0.3s;
+		}
+		table tr:hover{
+			background: #F7F7F7;
+			transition: 0.3s;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="flex" style="height: auto; width: 100%; gap: 50px;">
+
+		<div class="flex flexCol" style="height: auto; width: calc(100% - 60px); background: var(--white); padding: 30px; border: 1px solid #B0B0B0; border-radius: 10px; gap: 30px;">
+			<h1 style="font-size: 20px; font-weight: 500;">Registered Wardens</h1>
+
+			<div class="flex" style="height: auto; width: 100%;">
+
+				<table style="width: 100%;">
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone Number</th>
+						<th>Action</th>
+					</tr>
+					<tr>
+						<td>John Doe</td>
+						<td>john@mail.com</td>
+						<td>0123456789</td>
+						<td>
+							<span class="flex flexRow" style="width: 100%; gap: 10px; align-items: center; justify-content: center;">
+								<button>View</button>
+								<button class="rejectBtn">Delete</button>
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<td>Jane Doe</td>
+						<td>jane@mail.com</td>
+						<td>0123456789</td>
+						<td>
+							<span class="flex flexRow" style="width: 100%; gap: 10px; align-items: center; justify-content: center;">
+								<button>View</button>
+								<button class="rejectBtn">Delete</button>
+							</span>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
