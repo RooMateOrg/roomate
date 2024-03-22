@@ -6,116 +6,59 @@
 <body>
 
 	<div class="flex flexCol" style="height: auto; width: 100%; gap: 35px;">
-		<h1 style="font-weight: 600;">Available Properties (xx)</h1>
 
-		<div class="flex flexCol" style="width: 100%; gap: 40px;">
-			<!-- Card 1 Start -->
-			<a class="card" href="/greenperch/property.php" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
-				<div class="flex flexRow" style="height: 300px; width: 100%;">
-					<div style="height: 100%; width: 300px;">
-						<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
-					</div>
+		<?php
+		include 'config/dbconnection.php';
 
-					<div class="flex" style="height: 100%; width: calc(100% - 300px); justify-content: center; align-items: center;">
-						<div class="flex flexCol" style="height: calc(100% - 60px); width: calc(100% - 60px); font-weight: 500; justify-content: space-between;">
-							<span class="flex flexCol" style="gap: 15px;">
-								<h1 style="font-weight: 500;">2 Person Room</h1>
-								<h2 style="color: var(--accent); font-weight: 500;">LKR 8,000 Per Person</h2>
-								<p style="font-weight: 400;">Please contact through WhatsApp for inquiries</p>
-							</span>
+		$sql = "SELECT * FROM properties where status = 'Approved' ORDER BY id ASC";
+		$result = $conn->query($sql);
+		$count = $result->num_rows;
 
-							<span class="flex flexRow" style="color: #A0A0A0; gap: 40px;">
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-bed"></i> 2
-								</span>
+		echo'<h1 style="font-weight: 600;">Available Properties ('.$count.')</h1><div class="flex flexCol" style="width: 100%; gap: 40px;">';
 
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-bath"></i> 1
-								</span>
+		if ($count > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				echo '<a class="card" href="/greenperch/property.php?id='.$row['id'].'" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
+						<div class="flex flexRow" style="height: 300px; width: 100%;">
+							<div style="height: 100%; width: 300px;">
+								<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
+							</div>
 
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-border-top-left"></i> 300 sqft
-								</span>
-							</span>
+							<div class="flex" style="height: 100%; width: calc(100% - 300px); justify-content: center; align-items: center;">
+								<div class="flex flexCol" style="height: calc(100% - 60px); width: calc(100% - 60px); font-weight: 500; justify-content: space-between;">
+									<span class="flex flexCol" style="gap: 15px;">
+										<h1 style="font-weight: 500;">'.$row['type'].'</h1>
+										<h2 style="color: var(--accent); font-weight: 500;">LKR '.$row['price'].' Per Person</h2>
+										<p style="font-weight: 400;">Please contact through WhatsApp for inquiries</p>
+									</span>
 
-							<p>Available for Boys only</p>
+									<span class="flex flexRow" style="color: #A0A0A0; gap: 40px;">
+										<span class="flex flexRow" style="align-items: center; gap: 10px;">
+											<i class="fa-solid fa-bed"></i> '.$row['beds'].'
+										</span>
+
+										<span class="flex flexRow" style="align-items: center; gap: 10px;">
+											<i class="fa-solid fa-bath"></i> '.$row['bathrooms'].'
+										</span>
+
+										<span class="flex flexRow" style="align-items: center; gap: 10px;">
+											<i class="fa-solid fa-border-top-left"></i> '.$row['sqft'].' sqft
+										</span>
+									</span>
+
+									<p>Available for '.$row['category'].'</p>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-			</a>
-			<!-- Card 1 End -->
+					</a>';
+			}
+		} else {
+			echo "0 results";
+		}
 
-			<!-- Card 2 Start -->
-			<a class="card" href="/greenperch/property.php" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
-				<div class="flex flexRow" style="height: 300px; width: 100%;">
-					<div style="height: 100%; width: 300px;">
-						<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
-					</div>
-
-					<div class="flex" style="height: 100%; width: calc(100% - 300px); justify-content: center; align-items: center;">
-						<div class="flex flexCol" style="height: calc(100% - 60px); width: calc(100% - 60px); font-weight: 500; justify-content: space-between;">
-							<span class="flex flexCol" style="gap: 15px;">
-								<h1 style="font-weight: 500;">4 Person Room</h1>
-								<h2 style="color: var(--accent); font-weight: 500;">LKR 8,000 Per Person</h2>
-								<p style="font-weight: 400;">Please contact through WhatsApp for inquiries</p>
-							</span>
-
-							<span class="flex flexRow" style="color: #A0A0A0; gap: 40px;">
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-bed"></i> 4
-								</span>
-
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-bath"></i> 1
-								</span>
-
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-border-top-left"></i> 400 sqft
-								</span>
-							</span>
-
-							<p>Available for Girls only</p>
-						</div>
-					</div>
-				</div>
-			</a>
-			<!-- Card 2 End -->
-
-			<!-- Card 3 Start -->
-			<a class="card" href="/greenperch/property.php" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
-				<div class="flex flexRow" style="height: 300px; width: 100%;">
-					<div style="height: 100%; width: 300px;">
-						<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
-					</div>
-
-					<div class="flex" style="height: 100%; width: calc(100% - 300px); justify-content: center; align-items: center;">
-						<div class="flex flexCol" style="height: calc(100% - 60px); width: calc(100% - 60px); font-weight: 500; justify-content: space-between;">
-							<span class="flex flexCol" style="gap: 15px;">
-								<h1 style="font-weight: 500;">5 Person Room</h1>
-								<h2 style="color: var(--accent); font-weight: 500;">LKR 6,000 Per Person</h2>
-								<p style="font-weight: 400;">Please contact through WhatsApp for inquiries</p>
-							</span>
-
-							<span class="flex flexRow" style="color: #A0A0A0; gap: 40px;">
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-bed"></i> 5
-								</span>
-
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-bath"></i> 1
-								</span>
-
-								<span class="flex flexRow" style="align-items: center; gap: 10px;">
-									<i class="fa-solid fa-border-top-left"></i> 500 sqft
-								</span>
-							</span>
-
-							<p>Available for Girls only</p>
-						</div>
-					</div>
-				</div>
-			</a>
-			<!-- Card 3 End -->
+		$conn->close();
+		?>
 
 		</div>
 	</div>
