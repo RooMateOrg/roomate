@@ -8,9 +8,9 @@
 	<div class="flex flexCol" style="height: auto; width: 100%; gap: 35px;">
 
 		<?php
-		include 'config/dbconnection.php';
+		include './config/dbconnection.php';
 
-		$sql = "SELECT * FROM properties where status = 'Approved' ORDER BY id ASC";
+		$sql = "SELECT * FROM properties WHERE status = 'Approved' ORDER BY id ASC";
 		$result = $conn->query($sql);
 		$count = $result->num_rows;
 
@@ -52,13 +52,13 @@
 							</div>
 						</div>
 					</a>';
+				}
+			} else {
+				echo "0 results";
 			}
-		} else {
-			echo "0 results";
-		}
 
-		$conn->close();
-		?>
+			$conn->close();
+			?>
 
 		</div>
 	</div>

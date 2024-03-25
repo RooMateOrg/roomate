@@ -32,36 +32,42 @@
 
 				<table style="width: 100%;">
 					<tr>
+						<th>User ID</th>
 						<th>Name</th>
 						<th>Email</th>
-						<th>Phone Number</th>
-						<th>Property</th>
+						<th>Phone</th>
 						<th>Action</th>
 					</tr>
-					<tr>
-						<td>John Doe</td>
-						<td>john@mail.com</td>
-						<td>0123456789</td>
-						<td>Property Name</td>
-						<td>
-							<span class="flex flexRow" style="width: 100%; gap: 10px; align-items: center; justify-content: center;">
-								<button>View</button>
-								<button class="rejectBtn">Delete</button>
-							</span>
-						</td>
-					</tr>
-					<tr>
-						<td>Jane Doe</td>
-						<td>jane@mail.com</td>
-						<td>0123456789</td>
-						<td>Property Name</td>
-						<td>
-							<span class="flex flexRow" style="width: 100%; gap: 10px; align-items: center; justify-content: center;">
-								<button>View</button>
-								<button class="rejectBtn">Delete</button>
-							</span>
-						</td>
-					</tr>
+
+					<?php
+					include './config/dbconnection.php';
+
+					$sql = "SELECT * FROM users WHERE role = 'Landlord' ORDER BY id ASC";
+					$result = $conn->query($sql);
+
+					if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo '<tr>
+								<td>'.$row['id'].'</td>
+								<td>'.$row['name'].'</td>
+								<td>'.$row['email'].'</td>
+								<td>'.$row['phone'].'</td>
+								<td>
+									<span class="flex flexRow" style="width: 100%; gap: 10px; align-items: center; justify-content: center;">
+										<button>View</button>
+										<button class="rejectBtn">Delete</button>
+									</span>
+								</td>
+							</tr>';
+						}
+					} else {
+						echo "0 results";
+					}
+
+					$conn->close();
+					?>
+
 				</table>
 
 			</div>

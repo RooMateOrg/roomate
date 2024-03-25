@@ -10,29 +10,45 @@
 		<div class="flex flexCol" style="height: auto; width: calc(100% - 60px); background: var(--white); padding: 30px; border: 1px solid #B0B0B0; border-radius: 10px; gap: 30px;">
 			<span class="flex flexRow" style="align-items: center; justify-content: space-between;">
 				<h1 style="font-size: 20px; font-weight: 500;">Registered Users</h1>
-				<button>View Tables</button>
+				<button onclick="document.getElementById('tables').scrollIntoView();">View Tables</button>
 			</span>
 
 			<div class="flex" style="height: 300px; width: 100%;">
 				<div class="flex flexRow" style="height: auto; width: 100%; align-items: center; gap: 25px;">
 
+					<?php
+					include './config/dbconnection.php';
+
+					$studentsql = "SELECT * FROM users WHERE role = 'Student'";
+					$studentresult = $conn->query($studentsql);
+					$studentcount = $studentresult->num_rows;
+
+					$wardensql = "SELECT * FROM users WHERE role = 'Warden'";
+					$wardenresult = $conn->query($wardensql);
+					$wardencount = $wardenresult->num_rows;
+
+					$landlordsql = "SELECT * FROM users WHERE role = 'Landlord'";
+					$landlordresult = $conn->query($landlordsql);
+					$landlordcount = $landlordresult->num_rows;
+					?>
+
 					<div class="flex flexCol card" style="height: calc(100% - 50px); width: 35%; background: #F9F9F9; padding: 25px; border: 1.5px solid #B0B0B0; border-radius: 15px; align-items: center; justify-content: center;">
 						<div class="flex flexCol" style="align-items: center; justify-content: center; gap: 10px;">
-							<h2 style="font-size: 70px; font-weight: 300;">05</h2>
+							<h2 style="font-size: 70px; font-weight: 300;"><?php echo $studentcount; ?></h2>
 							<h2 style="font-size: 20px; font-weight: 600;">Students</h2>
 						</div>
 					</div>
 
 					<div class="flex flexCol card" style="height: calc(100% - 50px); width: 35%; background: #F9F9F9; padding: 25px; border: 1.5px solid #B0B0B0; border-radius: 15px; align-items: center; justify-content: center;">
 						<div class="flex flexCol" style="align-items: center; justify-content: center; gap: 10px;">
-							<h2 style="font-size: 70px; font-weight: 300;">02</h2>
+							<h2 style="font-size: 70px; font-weight: 300;"><?php echo $wardencount; ?></h2>
 							<h2 style="font-size: 20px; font-weight: 600;">Wardens</h2>
 						</div>
 					</div>
 
 					<div class="flex flexCol card" style="height: calc(100% - 50px); width: 35%; background: #F9F9F9; padding: 25px; border: 1.5px solid #B0B0B0; border-radius: 15px; align-items: center; justify-content: center;">
 						<div class="flex flexCol" style="align-items: center; justify-content: center; gap: 10px;">
-							<h2 style="font-size: 70px; font-weight: 300;">06</h2>
+							<h2 style="font-size: 70px; font-weight: 300;"><?php echo $landlordcount; ?></h2>
 							<h2 style="font-size: 20px; font-weight: 600;">Landlords</h2>
 						</div>
 					</div>

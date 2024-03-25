@@ -13,17 +13,33 @@
 			<div class="flex" style="height: 320px; width: 100%; overflow: auto;">
 				<div class="flex flexCol" style="height: auto; width: 100%; align-items: center; gap: 10px;">
 
-					<div class="flex flexRow card" style="height: 50px; width: calc(100% - 55px); background: #F9F9F9; padding: 25px; border: 1.5px solid #B0B0B0; border-radius: 15px; align-items: center; justify-content: space-between;">
-						<div class="flex flexCol" style="gap: 10px;">
-							<h2 style="font-size: 16px; font-weight: 500;">Isuru Rajitha - (isuru@nsbm.ac.lk)</h2>
-							<a href="/greenperch/property.php?id=10" style="width: fit-content; color: var(--accent); font-size: 14px; font-weight: 400;">View Property</a>
-						</div>
+					<?php
+					include './config/dbconnection.php';
 
-						<div class="flex flexRow" style="gap: 10px;">
-							<button class="approveBtn">Accept</button>
-							<button class="rejectBtn">Reject</button>
-						</div>
-					</div>
+					$sql = "SELECT properties.*, users.name, users.email FROM properties JOIN users ON properties.owner = users.email WHERE properties.status = 'Pending' ORDER BY properties.id ASC";
+					$result = $conn->query($sql);
+
+					if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo '<div class="flex flexRow card" style="height: 50px; width: calc(100% - 55px); background: #F9F9F9; padding: 25px; border: 1.5px solid #B0B0B0; border-radius: 15px; align-items: center; justify-content: space-between;">
+								<div class="flex flexCol" style="gap: 10px;">
+									<h2 style="font-size: 16px; font-weight: 500;">'.$row['name'].' - ('.$row['email'].')</h2>
+									<a href="/greenperch/property.php?id='.$row['id'].'" style="width: fit-content; color: var(--accent); font-size: 14px; font-weight: 400;">View Property</a>
+								</div>
+
+								<div class="flex flexRow" style="gap: 10px;">
+									<button class="approveBtn">Accept</button>
+									<button class="rejectBtn">Reject</button>
+								</div>
+							</div>';
+						}
+					} else {
+						echo "0 results";
+					}
+
+					$conn->close();
+					?>
 
 				</div>
 			</div>

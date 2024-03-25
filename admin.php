@@ -44,6 +44,11 @@
 		include 'templates/admin/properties.html';
 		include 'templates/admin/adduser.html';
 		include 'templates/admin/addblog.html';
+		?>
+
+		<hr style="border-top: 1px solid transparent;" id="tables">
+
+		<?php
 		include 'templates/admin/viewlandlords.html';
 		include 'templates/admin/viewwardens.html';
 		include 'templates/admin/viewstudents.html';

@@ -34,22 +34,28 @@
 					<div style="height: 600px; width: 100%;">
 
 						<?php
-						$locations = [
-							['name' => 'NSBM Green University Town Hostel Complex', 'placeId' => 'ChIJ-9uPlHZS4joRP6jpodvXrIk'],
-							['name' => 'M&M Hostel (Boys)', 'placeId' => 'ChIJobkzO3pS4joR23ZqGLhkGK8'],
-							['name' => 'DVS Boys Hostel', 'placeId' => 'ChIJq1sRXb9T4joR_zjZV6LBDeQ'],
-							['name' => 'Venaya Boys Hostel', 'placeId' => 'ChIJNR9SPSNT4joRTYUe6u03M5Y'],
-							['name' => 'Bodima', 'placeId' => 'ChIJl0aO0iFT4joRRdD_j7K9Sas'],
-							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
-							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
-							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
-							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
-							['name' => 'NSBM Green University', 'placeId' => 'ChIJVVVVBTtS4joRiPT2mc00bFQ'],
-						];
+						include './config/dbconnection.php';
+
+						$sql = "SELECT name, placeid FROM properties WHERE status = 'Approved' ORDER BY id ASC";
+						$result = $conn->query($sql);
+
+						$locations = array();
+
+						if ($result->num_rows > 0) {
+							// output data of each row
+							while($row = $result->fetch_assoc()) {
+								$locations[] = array(
+									'name' => $row['name'],
+									'placeid' => $row['placeid']
+								);
+							}
+						}
+
+						$conn->close();
 
 						echo '<ul id="locations">';
 						foreach ($locations as $location) {
-							echo '<li data-place-id="' . $location['placeId'] . '">' . $location['name'] . '</li>';
+							echo '<li data-place-id="' . $location['placeid'] . '">' . $location['name'] . '</li>';
 						}
 						echo '</ul>';
 						?>

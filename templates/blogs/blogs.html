@@ -9,59 +9,38 @@
 		<h1 style="font-weight: 600;">Blogs</h1>
 
 		<div class="flex flexCol" style="width: 100%; gap: 40px;">
-			<!-- Card 1 Start -->
-			<a class="card" href="/greenperch/blog.php" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
+
+			<?php
+			include './config/dbconnection.php';
+
+			$sql = "SELECT * FROM blogs ORDER BY id ASC";
+			$result = $conn->query($sql);
+
+			if ($result->num_rows > 0) {
+				// output data of each row	
+				while($row = $result->fetch_assoc()) {
+					echo '<a class="card" href="'.$row['url'].'" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
 				<div class="flex flexRow" style="height: 300px; width: 100%;">
 					<div style="height: 100%; width: 300px;">
-						<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
+						<img src="'.$row['image'].'" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
 					</div>
 
 					<div class="flex" style="height: 100%; width: calc(100% - 300px); justify-content: center; align-items: center;">
 						<div class="flex flexCol" style="height: calc(100% - 60px); width: calc(100% - 60px); font-weight: 500; justify-content: flex-start; gap: 20px;">
-							<h1 style="color: var(--accent);font-weight: 500; font-size: 16px;">Category</h1>
-							<h2 style="font-weight: 500; font-size: 28px;">Title</h2>
-							<p style="color: #808080; line-height: 1.5; font-weight: 400; text-align: justify; text-align-last: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae exercitationem velit quidem doloribus molestiae expedita distinctio, eaque, sequi facere enim maiores, accusantium nemo sint perferendis earum voluptas! Dicta, est praesentium.</p>
+							<h1 style="color: var(--accent);font-weight: 500; font-size: 16px;">'.$row['category'].'</h1>
+							<h2 style="font-weight: 500; font-size: 28px;">'.$row['title'].'</h2>
+							<p style="color: #808080; line-height: 1.5; font-weight: 400; text-align: justify; text-align-last: left;">'.$row['description'].'</p>
 						</div>
 					</div>
 				</div>
-			</a>
-			<!-- Card 1 End -->
+			</a>';
+				}
+			} else {
+				echo "0 results";
+			}
 
-			<!-- Card 2 Start -->
-			<a class="card" href="/greenperch/blog.php" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
-				<div class="flex flexRow" style="height: 300px; width: 100%;">
-					<div style="height: 100%; width: 300px;">
-						<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
-					</div>
-
-					<div class="flex" style="height: 100%; width: calc(100% - 300px); justify-content: center; align-items: center;">
-						<div class="flex flexCol" style="height: calc(100% - 60px); width: calc(100% - 60px); font-weight: 500; justify-content: flex-start; gap: 20px;">
-							<h1 style="color: var(--accent);font-weight: 500; font-size: 16px;">Category</h1>
-							<h2 style="font-weight: 500; font-size: 28px;">Title</h2>
-							<p style="color: #808080; line-height: 1.5; font-weight: 400; text-align: justify; text-align-last: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae exercitationem velit quidem doloribus molestiae expedita distinctio, eaque, sequi facere enim maiores, accusantium nemo sint perferendis earum voluptas! Dicta, est praesentium.</p>
-						</div>
-					</div>
-				</div>
-			</a>
-			<!-- Card 2 End -->
-
-			<!-- Card 3 Start -->
-			<a class="card" href="/greenperch/blog.php" style="height: auto; width: 100%; color: var(--blackGrey); text-decoration: none; background: var(--white); border-radius: 15px;">
-				<div class="flex flexRow" style="height: 300px; width: 100%;">
-					<div style="height: 100%; width: 300px;">
-						<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; border-radius: 15px 0 0 15px;">
-					</div>
-
-					<div class="flex" style="height: 100%; width: calc(100% - 300px); justify-content: center; align-items: center;">
-						<div class="flex flexCol" style="height: calc(100% - 60px); width: calc(100% - 60px); font-weight: 500; justify-content: flex-start; gap: 20px;">
-							<h1 style="color: var(--accent);font-weight: 500; font-size: 16px;">Category</h1>
-							<h2 style="font-weight: 500; font-size: 28px;">Title</h2>
-							<p style="color: #808080; line-height: 1.5; font-weight: 400; text-align: justify; text-align-last: left;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae exercitationem velit quidem doloribus molestiae expedita distinctio, eaque, sequi facere enim maiores, accusantium nemo sint perferendis earum voluptas! Dicta, est praesentium.</p>
-						</div>
-					</div>
-				</div>
-			</a>
-			<!-- Card 3 End -->
+			$conn->close();
+			?>
 
 		</div>
 	</div>
