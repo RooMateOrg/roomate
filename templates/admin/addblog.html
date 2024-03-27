@@ -10,24 +10,34 @@
 		<div class="flex flexCol" style="height: auto; width: calc(100% - 60px); background: var(--white); padding: 30px; border: 1px solid #B0B0B0; border-radius: 10px; gap: 30px;">
 			<h1 style="font-size: 20px; font-weight: 500;">New Blog</h1>
 
-			<form class="flex flexCol" action="/greenperch/landlord/addblog" method="POST" style="width: 100%; gap: 40px;">
+			<form class="flex flexCol" action="/greenperch/api/addblog.php" method="POST" style="width: 100%; gap: 40px;">
 				<span class="flex flexRow" style="width: 100%; gap: 40px;">
 					<div class="flex flexCol" style="width: 50%; gap: 20px;">
 						<span class="flex flexCol" style="gap: 10px;">
 							<label style="color: #808080; font-weight: 500;">Blog Image:</label>
-							<input type="file" name="blogImage" id="blogImage" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;" required>
+							<input type="text" name="blogImage" id="blogImage" placeholder="Enter image url for the blog" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" value="/greenperch/assets/images/temp.png">
 						</span>
 
 						<span class="flex flexCol" style="gap: 10px;">
-							<label style="color: #808080; font-weight: 500;">Blog Content:</label>
-							<textarea name="content" id="content" placeholder="Enter content for the blog" style="height: 300px; width: calc(100% - 20px); resize: none; font-size: 14px; padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required></textarea>
+							<label style="color: #808080; font-weight: 500;">Blog Description:</label>
+							<textarea name="blogDescription" id="blogDescription" placeholder="Enter description for the blog" style="height: 300px; width: calc(100% - 20px); resize: none; font-size: 14px; padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required></textarea>
 						</span>
 					</div>
 
-					<div class="flex flexCol" style="width: 50%;">
+					<div class="flex flexCol" style="width: 50%; gap: 20px;">
 						<span class="flex flexCol" style="gap: 10px;">
 							<label style="color: #808080; font-weight: 500;">Blog Name:</label>
 							<input type="text" name="blogName" id="blogName" placeholder="Enter name for the blog" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+						</span>
+
+						<span class="flex flexCol" style="gap: 10px;">
+							<label style="color: #808080; font-weight: 500;">Blog Category:</label>
+							<input type="text" name="blogCategory" id="blogCategory" placeholder="Enter category for the blog" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+						</span>
+
+						<span class="flex flexCol" style="gap: 10px;">
+							<label style="color: #808080; font-weight: 500;">Blog URL:</label>
+							<input type="text" name="blogLink" id="blogLink" placeholder="Enter link for the blog" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" value="/greenperch/blogs/blog1.php" required>
 						</span>
 					</div>
 				</span>
