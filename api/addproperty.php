@@ -3,14 +3,14 @@ include '../config/dbconnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$name = $_POST['propertyName'];
-	$type = '2 Person';
+	$type = $_POST['type'];
 	$description = $_POST['description'];
 	$category = $_POST['category'];
 	$price = $_POST['price'];
 	$beds = $_POST['beds'];
 	$bathrooms = $_POST['bathrooms'];
 	$bedrooms = $_POST['bedrooms'];
-	$sqft = '300';
+	$sqft = $_POST['sqft'];
 	$availability = $_POST['availability'];
 	$placeid = $_POST['placeID'];
 	$image1 = $_POST['propertyImage1'];

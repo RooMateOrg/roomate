@@ -15,15 +15,27 @@
 					<div class="flex flexCol" style="width: 50%; gap: 20px;">
 						<span class="flex flexCol" style="gap: 10px;">
 							<label style="color: #808080; font-weight: 500;">Property Images (Upto 4 Images):</label>
-							<input type="file" name="propertyImage1" id="propertyImage1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
-							<input type="file" name="propertyImage2" id="propertyImage2" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
-							<input type="file" name="propertyImage3" id="propertyImage3" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
-							<input type="file" name="propertyImage4" id="propertyImage4" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;">
+							<input type="text" name="propertyImage1" id="propertyImage1" placeholder="Enter image URL for the image" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" value="/greenperch/assets/images/temp.png" required>
+							<input type="text" name="propertyImage2" id="propertyImage2" placeholder="Enter image URL for the image" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" value="/greenperch/assets/images/temp.png">
+							<input type="text" name="propertyImage3" id="propertyImage3" placeholder="Enter image URL for the image" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" value="/greenperch/assets/images/temp.png">
+							<input type="text" name="propertyImage4" id="propertyImage4" placeholder="Enter image URL for the image" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" value="/greenperch/assets/images/temp.png">
 						</span>
 
 						<span class="flex flexCol" style="gap: 10px;">
 							<label style="color: #808080; font-weight: 500;">Description:</label>
 							<textarea name="description" id="description" placeholder="Enter brief description for the property" style="height: 300px; width: calc(100% - 20px); resize: none; font-size: 14px; padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required></textarea>
+						</span>
+
+						<span class="flex flexRow" style="width: 100%; gap: 20px;">
+							<span class="flex flexCol" style="width: 50%; gap: 10px;">
+								<label style="color: #808080; font-weight: 500;">Square Feet (sqft):</label>
+								<input type="number" name="sqft" id="sqft" placeholder="Square Feet" min="1" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+							</span>
+
+							<span class="flex flexCol" style="width: 50%; gap: 10px;">
+								<label style="color: #808080; font-weight: 500;">Room Type:</label>
+								<input type="text" name="type" id="type" placeholder="Enter the room type (Ex:- 2 Person)" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px;" required>
+							</span>
 						</span>
 					</div>
 
