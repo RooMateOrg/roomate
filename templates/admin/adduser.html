@@ -11,11 +11,11 @@
 			<h1 style="font-size: 20px; font-weight: 500;">New User</h1>
 
 			<div class="flex" style="height: auto; width: 100%;">
-				<form class="flex flexCol" style="height: auto; width: 100%; align-items: center; gap: 25px;">
+				<form class="flex flexCol" action="/greenperch/api/adduser.php" method="POST" style="height: auto; width: 100%; align-items: center; gap: 25px;">
 
 					<span class="flex flexCol" style="width: 100%; gap: 10px;">
 						<label style="color: #808080; font-weight: 500;">Category:</label>
-						<select name="category" id="category" style="height: auto; width: 100%; background: var(--white); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;" required>
+						<select name="role" id="role" style="height: auto; width: 100%; background: var(--white); padding: 10px; border: 1px solid #B0B0B0; border-radius: 5px; cursor: pointer;" required>
 							<option value="Landlord" selected>Landlord</option>
 							<option value="Warden">Warden</option>
 							<option value="Student">Student</option>
