@@ -35,7 +35,7 @@
 				</div>
 
 				<div class="flex flexCol" style="color: var(--blackGrey); background: var(--white); height: calc(100% - 50px); width: calc(65% - 50px); padding: 25px; gap: 15px; border-radius: 0 15px 15px 0;">
-					<form class="flex flexCol" style="height: 100%; width: 100%; gap: 30px;">
+					<form class="flex flexCol" style="height: 100%; width: 100%; gap: 30px;" action="/greenperch/api/userregister.php" method="POST">
 						<span class="flex flexCol" style="gap: 5px;">
 							<h1 style="font-size: 24px; font-weight: 600;">Register</h1>
 							<p style="font-size: 16px;">Select your role and register your account</p>
@@ -50,6 +50,8 @@
 							</select>
 
 							<input type="text" name="Name" placeholder="Name" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
+
+							<input type="tel" name="Phone" maxlength="10" placeholder="Phone" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
 
 							<input type="email" name="Email" placeholder="Email" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
 
