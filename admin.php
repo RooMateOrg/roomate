@@ -46,7 +46,7 @@
 		include 'templates/admin/addblog.html';
 		?>
 
-		<hr style="border-top: 1px solid transparent;" id="tables">
+		<hr style="border-top: 1px solid transparent; margin-top: -60px; margin-bottom: 60px;" id="tables">
 
 		<?php
 		include 'templates/admin/viewlandlords.html';

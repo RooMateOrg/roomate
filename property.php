@@ -1,3 +1,15 @@
+<?php
+include './config/dbconnection.php';
+
+$paramid = $_GET['id'];
+
+$sql = "SELECT * FROM properties WHERE id = $paramid";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	$property = $result->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +18,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Property Name - Properties | The Green Perch</title>
+	<title><?php echo $property['name']; ?> - Properties | The Green Perch</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,3 +60,11 @@
 </body>
 
 </html>
+
+<?php
+} else {
+	include '404.php';
+}
+
+$conn->close();
+?>

@@ -1,3 +1,19 @@
+<?php
+include './config/dbconnection.php';
+
+$paramid = $_GET['id'];
+
+$sql = "SELECT * FROM properties WHERE id = $paramid";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	// output data of each row
+	$property = $result->fetch_assoc();
+} else {
+	echo "No results found";
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,27 +22,27 @@
 <body>
 
 	<div class="flex flexCol" style="height: auto; width: 100%; padding-top: 50px; gap: 35px;">
-		<h1 style="color: var(--accent2); font-weight: 600; width: 100%;">Room for rent in Pitipana</h1>
+		<h1 style="color: var(--accent2); font-weight: 600; width: 100%;"><?php echo $property['name']; ?></h1>
 
 		<div class="flex flexRow" style="width: 100%; justify-content: space-between;">
 			<div class="flex flexCol" style="height: auto; width: 70%; gap: 50px;">
 
 				<div class="flex flexRow" style="height: 600px; width: 100%; gap: 10px;">
 					<div style="height: 100%; width: 80%; background: #B0B0B0; border-radius: 5px;">
-						<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
+						<img src="<?php echo $property['image1']; ?>" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
 					</div>
 
 					<div class="flex flexCol" style="height: 100%; width: 20%; gap: 10px;">
 						<div style="height: 25%; background: #B0B0B0; border-radius: 5px;">
-							<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
+							<img src="<?php echo $property['image2']; ?>" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
 						</div>
 
 						<div style="height: 25%; background: #B0B0B0; border-radius: 5px;">
-							<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
+							<img src="<?php echo $property['image3']; ?>" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
 						</div>
 
 						<div style="height: 25%; background: #B0B0B0; border-radius: 5px;">
-							<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
+							<img src="<?php echo $property['image4']; ?>" style="height: 100%; width: 100%; object-fit: cover; object-position: center; border-radius: 5px;">
 						</div>
 					</div>
 				</div>
@@ -38,39 +54,39 @@
 						<div class="flex flexCol" style="width: 50%; gap: 20px;">
 							<span class="flex flexRow" style="gap: 10px;">
 								<p style="color: #808080; font-weight: 500;">Property Type:</p>
-								<p>Room</p>
+								<p><?php echo $property['type']; ?></p>
 							</span>
 
 							<span class="flex flexRow" style="gap: 10px;">
 								<p style="color: #808080; font-weight: 500;">Bedrooms:</p>
-								<p>Bedrooms</p>
+								<p><?php echo $property['bedrooms']; ?></p>
 							</span>
 
 							<span class="flex flexRow" style="gap: 10px;">
 								<p style="color: #808080; font-weight: 500;">Beds:</p>
-								<p>Beds</p>
+								<p><?php echo $property['beds']; ?></p>
 							</span>
 
 							<span class="flex flexRow" style="gap: 10px;">
 								<p style="color: #808080; font-weight: 500;">Category:</p>
-								<p>Boys</p>
+								<p><?php echo $property['category']; ?></p>
 							</span>
 						</div>
 
 						<div class="flex flexCol" style="width: 50%; gap: 20px;">
 							<span class="flex flexRow" style="gap: 10px;">
 								<p style="color: #808080; font-weight: 500;">Price:</p>
-								<p>LKR 15,000 Per month</p>
+								<p>LKR <?php echo $property['price']; ?> Per month</p>
 							</span>
 
 							<span class="flex flexRow" style="gap: 10px;">
 								<p style="color: #808080; font-weight: 500;">Bathrooms:</p>
-								<p>1</p>
+								<p><?php echo $property['bathrooms']; ?></p>
 							</span>
 
 							<span class="flex flexRow" style="gap: 10px;">
 								<p style="color: #808080; font-weight: 500;">Availability:</p>
-								<p>Available</p>
+								<p><?php echo $property['availability']; ?></p>
 							</span>
 						</div>
 					</div>
@@ -80,7 +96,7 @@
 					<h1 style="font-size: 20px; font-weight: 500;">Description</h1>
 
 					<div class="flex flexRow" style="width: 100%;">
-						<p style="color: #808080; font-weight: 400; line-height: 1.5; text-align: justify; text-align-last: left;">Lorem ipsum dolor sit amet ultricies lacinia curabitur nulla. Scelerisque consequat pretium vel porta litora. Ante primis tempus pharetra vivamus facilisis auctor sit lorem. Vulputate ullamcorper sem ut magna rhoncus. Magnis efficitur odio tempor sociosqu eu habitant sem maecenas nostra tincidunt nulla. Aenean per dolor sem est posuere ex condimentum imperdiet.</p>
+						<p style="color: #808080; font-weight: 400; line-height: 1.5; text-align: justify; text-align-last: left;"><?php echo $property['description']; ?></p>
 					</div>
 				</div>
 			</div>
@@ -95,7 +111,7 @@
 
 						<div class="flex flexCol" style="gap: 5px;">
 							<p style="color: #808080; font-size: 16px; font-weight: 500;">Advertised By</p>
-							<p style="color: var(--accent); font-size: 18px; font-weight: 600;">John Doe</p>
+							<p style="color: var(--accent); font-size: 18px; font-weight: 600;"><?php echo $property['owner']; ?></p>
 						</div>
 					</div>
 
@@ -153,7 +169,7 @@
 				</div>
 
 				<div class="flex" style="height: 300px; width: 100%; background: linear-gradient(#ecececa0, #ecececa0), url('/greenperch/assets/images/map.jpg'); background-size: cover; background-position: center; border: 1px solid #B0B0B0; border-radius: 10px; align-items: center; justify-content: center;">
-					<a class="anchorBtn" href="/greenperch/mapview.php">Show on map</a>
+					<a class="anchorBtn" href="/greenperch/mapview.php">Show Map</a>
 				</div>
 
 			</div>
