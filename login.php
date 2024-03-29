@@ -35,7 +35,7 @@
 				</div>
 
 				<div class="flex flexCol" style="color: var(--blackGrey); background: var(--white); height: calc(100% - 50px); width: calc(65% - 50px); padding: 25px; gap: 15px; border-radius: 0 15px 15px 0;">
-					<form class="flex flexCol" style="height: 100%; width: 100%; gap: 30px;">
+					<form class="flex flexCol" style="height: 100%; width: 100%; gap: 30px;" action="/greenperch/api/userlogin.php" method="POST">
 						<span class="flex flexCol" style="gap: 5px;">
 							<h1 style="font-size: 24px; font-weight: 600;">Login</h1>
 							<p style="font-size: 16px;">Select your role and login to your account</p>
