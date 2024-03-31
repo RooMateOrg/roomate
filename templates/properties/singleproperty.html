@@ -6,6 +6,16 @@ $paramid = $_GET['id'];
 $sql = "SELECT * FROM properties WHERE id = $paramid";
 $result = $conn->query($sql);
 
+$ownersql = "SELECT properties.*, users.name, users.email FROM properties JOIN users ON properties.owner = users.email WHERE properties.status = 'Approved' ORDER BY properties.id ASC";
+$ownerresult = $conn->query($ownersql);
+
+if ($ownerresult->num_rows > 0) {
+	// output data of each row
+	$owner = $ownerresult->fetch_assoc();
+} else {
+	echo "No results found";
+}
+
 if ($result->num_rows > 0) {
 	// output data of each row
 	$property = $result->fetch_assoc();
@@ -75,8 +85,8 @@ if ($result->num_rows > 0) {
 
 						<div class="flex flexCol" style="width: 50%; gap: 20px;">
 							<span class="flex flexRow" style="gap: 10px;">
-								<p style="color: #808080; font-weight: 500;">Price:</p>
-								<p>LKR <?php echo $property['price']; ?> Per month</p>
+								<p style="color: #808080; font-weight: 500;">Price (Per/m):</p>
+								<p><?php echo $property['price']; ?> LKR</p>
 							</span>
 
 							<span class="flex flexRow" style="gap: 10px;">
@@ -111,7 +121,7 @@ if ($result->num_rows > 0) {
 
 						<div class="flex flexCol" style="gap: 5px;">
 							<p style="color: #808080; font-size: 16px; font-weight: 500;">Advertised By</p>
-							<p style="color: var(--accent); font-size: 18px; font-weight: 600;"><?php echo $property['owner']; ?></p>
+							<p style="color: var(--accent); font-size: 18px; font-weight: 600;"><?php echo $owner['name']; ?></p>
 						</div>
 					</div>
 
@@ -120,24 +130,35 @@ if ($result->num_rows > 0) {
 					<div class="flex flexCol" style="height: auto; width: 100%; gap: 10px;">
 						<div class="flex flexRow" style="font-size: 14px; justify-content: space-between;">
 							<span class="flex flexRow" style="align-items: center; gap: 10px;">
-								<i class="fa-solid fa-location-dot" style="width: 15px; color: #B0B0B0; font-size: 12px;"></i>
-								<p style="color: #808080; font-weight: 500;">Location</p>
+								<i class="fa-solid fa-hashtag" style="width: 15px; color: #B0B0B0; font-size: 12px;"></i>
+								<p style="color: #808080; font-weight: 500;">Property ID</p>
 							</span>
 
-							Pitipana
+							<?php echo $property['id']; ?>
 						</div>
 
 						<div class="flex flexRow" style="font-size: 14px; justify-content: space-between;">
 							<span class="flex flexRow" style="align-items: center; gap: 10px;">
-								<i class="fa-solid fa-user-plus" style="width: 15px; color: #B0B0B0; font-size: 12px;"></i>
-								<p style="color: #808080; font-weight: 500;">Joined</p>
+								<i class="fa-solid fa-money-check-dollar" style="width: 15px; color: #B0B0B0; font-size: 12px;"></i>
+								<p style="color: #808080; font-weight: 500;">Price (Per/m)</p>
 							</span>
 
-							2 Hours Ago
+							<?php echo $property['price']; ?> LKR
 						</div>
 					</div>
 
-					<button>Make a request</button>
+					<form style="width: 100%;" action="/greenperch/api/srequest.php" method="POST">
+					<?php if(isset($_COOKIE['userid']) && $_COOKIE['role'] === 'Student') { ?>
+						<input type="hidden" name="propertyid" value="<?php echo $property['id']; ?>">
+						<input type="hidden" name="owner" value="<?php echo $owner['email']; ?>">
+						<input type="hidden" name="userid" value="<?php echo $_COOKIE['userid']; ?>">
+						<button type="submit" style="width: 100%;" onclick="sendRequest()">Make a Request</button>
+					<?php } else { ?>
+						<button disabled type="submit" class="flex flexRow" style="width: 100%; background: #808080; align-items: center; justify-content: center; gap: 10px;" title="Login as a Student to Send a Request">
+							<i class="fa-solid fa-lock"></i> Make a Request
+						</button>
+					<?php } ?>
+					</form>
 				</div>
 
 				<div class="flex flexCol" style="height: auto; width: calc(100% - 60px); background: var(--white); padding: 30px; border: 1px solid #B0B0B0; border-radius: 10px; gap: 20px;">
