@@ -22,13 +22,31 @@
 <body>
 
 	<?php
+	if (isset($_COOKIE['role'])) {
+		$role = $_COOKIE['role'];
+		switch ($role) {
+			case 'Student':
+				header("Location: /greenperch");
+				exit;
+			case 'Landlord':
+				header("Location: /greenperch/landlord.php");
+				exit;
+			case 'Warden':
+				header("Location: /greenperch/warden.php");
+				exit;
+			case 'Admin':
+				header("Location: /greenperch/admin.php");
+				exit;
+		}
+	}
+
 	include 'templates/navbar.html';
 	?>
 
 	<div class="flex containerBlock">
 		<div class="flex flexCol container" style="padding-top: 40px;">
 
-			<div class="flex flexRow card" style="color: var(--blackGrey); background: var(--white); height: 550px; width: 100%; border-radius: 15px;">
+			<div class="flex flexRow card" style="color: var(--blackGrey); background: var(--white); height: 600px; width: 100%; border-radius: 15px;">
 
 				<div style="height: 100%; width: 35%;">
 					<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; background-position: center; border-radius: 15px 0 0 15px;">
@@ -38,23 +56,18 @@
 					<form class="flex flexCol" style="height: 100%; width: 100%; gap: 30px;" action="/greenperch/api/userlogin.php" method="POST">
 						<span class="flex flexCol" style="gap: 5px;">
 							<h1 style="font-size: 24px; font-weight: 600;">Login</h1>
-							<p style="font-size: 16px;">Select your role and login to your account</p>
+							<p style="font-size: 16px;">Login to your account</p>
 						</span>
 
 						<div class="flex flexCol" style="height: auto; width: 100%; gap: 20px;">
-							<select name="Role" style="height: auto; width: 100%; padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
-								<option value="Landlord">Landlord</option>
-								<option value="Warden">Warden</option>
-								<option value="Student">Student</option>
-								<option value="Admin">Admin</option>
-							</select>
-
 							<input type="email" name="Email" placeholder="Email" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
 
 							<input type="password" name="Password" placeholder="Password" style="height: auto; width: calc(100% - 20px); padding: 10px; border: 1px solid var(--blackGrey); border-radius: 10px;" required>
 						</div>
 
 						<button style="width: fit-content;" type="submit">Login</button>
+
+						<p style="font-size: 14px;">New User? <a href="/greenperch/register.php" style="color: var(--accent2);">Register</a></p>
 					</form>
 				</div>
 

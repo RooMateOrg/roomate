@@ -1,3 +1,10 @@
+<?php
+if (!isset($_COOKIE['role']) || $_COOKIE['role'] != 'Warden') {
+	header("Location: /greenperch/notauthorised.php");
+	exit;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,14 +36,14 @@
 		<div class="flex flexCol container">
 
 		<h1 style="color: var(--accent2); font-weight: 600; padding-top: 50px;">
-			Hello 
+			Welcome 
 			<?php 
-				if(isset($_SESSION['user'])){
-					echo $_SESSION['user']['name'];
+				if(isset($_COOKIE['name'])){
+					echo explode(' ', $_COOKIE['name'])[0];
 				} else {
 					echo "User";
 				}
-			?>
+			?>,
 		</h1>
 
 		<?php

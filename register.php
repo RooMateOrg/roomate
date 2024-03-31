@@ -22,13 +22,31 @@
 <body>
 
 	<?php
+	if (isset($_COOKIE['role'])) {
+		$role = $_COOKIE['role'];
+		switch ($role) {
+			case 'Student':
+				header("Location: /greenperch");
+				exit;
+			case 'Landlord':
+				header("Location: /greenperch/landlord.php");
+				exit;
+			case 'Warden':
+				header("Location: /greenperch/warden.php");
+				exit;
+			case 'Admin':
+				header("Location: /greenperch/admin.php");
+				exit;
+		}
+	}
+
 	include 'templates/navbar.html';
 	?>
 
 	<div class="flex containerBlock">
 		<div class="flex flexCol container" style="padding-top: 40px;">
 
-			<div class="flex flexRow card" style="color: var(--blackGrey); background: var(--white); height: 550px; width: 100%; border-radius: 15px;">
+			<div class="flex flexRow card" style="color: var(--blackGrey); background: var(--white); height: 600px; width: 100%; border-radius: 15px;">
 
 				<div style="height: 100%; width: 35%;">
 					<img src="/greenperch/assets/images/temp.png" style="height: 100%; width: 100%; object-fit: cover; background-position: center; border-radius: 15px 0 0 15px;">
@@ -61,6 +79,8 @@
 						</div>
 
 						<button style="width: fit-content;" type="submit">Register</button>
+
+						<p style="font-size: 14px;">Existing User? <a href="/greenperch/login.php" style="color: var(--accent2);">Login</a></p>
 					</form>
 				</div>
 

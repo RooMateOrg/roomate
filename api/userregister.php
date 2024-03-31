@@ -13,7 +13,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	if ($password === $confpassword) {
 		if ($conn->query($sql) === TRUE) {
-			echo "New record created successfully";
+			echo "User registered successfully";
+
+			// Retrieve the user ID from the database
+			$userId = $conn->insert_id;
+
+			// Set the userid cookie for 30 days
+			setcookie('userid', $userId, time() + (86400 * 30), '/');
+
+			setcookie('email', $email, time() + (86400 * 30), '/'); // Save email cookie for 30 days
+			setcookie('name', $name, time() + (86400 * 30), '/'); // Save name cookie for 30 days
+			setcookie('role', $role, time() + (86400 * 30), '/'); // Save role cookie for 30 days
+
+			switch ($role) {
+				case 'Landlord':
+					header("Location: /greenperch/landlord.php");
+					exit;
+				case 'Warden':
+					header("Location: /greenperch/warden.php");
+					exit;
+				case 'Admin':
+					header("Location: /greenperch/admin.php");
+					exit;
+				case 'Student':
+					header("Location: /greenperch");
+					exit;
+			}
 		} else {
 			echo "Error: " . $sql . "<br>" . $conn->error;
 		}

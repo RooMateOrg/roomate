@@ -1,7 +1,62 @@
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+	<style>
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+		.dropdown:hover .dropdown-content {
+			display: block;
+			color: var(--blackGrey);
+			background: #F5F5F5;
+			border-radius: 4px;
+		}
+
+		.dropbtn {
+			display: block;
+			color: var(--accent2);
+			background: transparent;
+			padding: 8px 16px;
+			border-radius: 4px;
+			text-decoration: none;
+			cursor: pointer;
+			user-select: none;
+			transition: 0.3s;
+		}
+		.dropbtn:hover {
+			background: #F5F5F5;
+			transition: 0.3s;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			right: 0;
+			min-width: 160px;
+			z-index: 1;
+		}
+		.dropdown-content a {
+			display: block;
+			color: var(--blackGrey);
+			padding: 12px;
+			font-size: 13px;
+			font-weight: 300;
+			text-decoration: none;
+			border-radius: 0 0 4px 4px;
+			border-top: 0.5px solid #D0D0D0;
+		}
+		.dropdown-content a:first-child {
+			border-radius: 4px 4px 0 0;
+			border-top: none;
+		}
+		.dropdown-content a:hover {
+			background: #F0F0F0;
+		}
+
+	</style>
+</head>
 
 <body>
 
@@ -19,8 +74,26 @@
 				<a href="/greenperch/about.php">About</a>
 
 				<?php
-				if (isset($_SESSION['user'])) {
-					echo '<a href="/greenperch/logout.php">Logout</a>';
+				if (isset($_COOKIE['name'])) {
+					$name = explode(' ', $_COOKIE['name'])[0];
+					$role = strtolower($_COOKIE['role']);
+					$dashboardUrl = $role == 'student' ? '/greenperch' : '/greenperch/'.$role.'.php';
+					if ($role !== 'student') {
+						echo '<div class="dropdown">
+							<span class="dropbtn">Hi, ' . $name . '</span>
+							<div class="dropdown-content">
+								<a href="'.$dashboardUrl.'">Dashboard</a>
+								<a href="/greenperch/logout.php">Logout</a>
+							</div>
+						</div>';
+					} else {
+						echo '<div class="dropdown">
+							<span class="dropbtn">Hi, ' . $name . '</span>
+							<div class="dropdown-content">
+								<a href="/greenperch/logout.php">Logout</a>
+							</div>
+						</div>';
+					}
 				} else {
 					echo '<a href="/greenperch/login.php">Login</a>';
 				}
