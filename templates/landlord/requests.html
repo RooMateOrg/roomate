@@ -30,10 +30,10 @@
 									<a href="/greenperch/property.php?id='.$row['propertyid'].'" style="width: fit-content; color: var(--accent); font-size: 14px; font-weight: 400;">View Property</a>
 								</div>
 
-								<div class="flex flexRow" style="gap: 10px;">
-									<button class="approveBtn">Accept</button>
-									<button class="rejectBtn">Reject</button>
-								</div>
+								<form action="/greenperch/api/srequest_update.php" method="POST">
+									<input type="hidden" name="requestid" value="'.$row['requestid'].'">
+									<button type="submit" class="rejectBtn">Reject Request</button>
+								</form>
 							</div>';
 						}
 					} else {

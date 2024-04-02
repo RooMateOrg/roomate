@@ -2,16 +2,12 @@
 include '../config/dbconnection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	$name = $_POST['fullName'];
-	$role = $_POST['role'];
-	$phone = $_POST['telephone'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$requestid = $_POST['requestid'];
 
-	$sql = "INSERT INTO users (name, role, phone, email, password) VALUES ('$name', '$role', '$phone', '$email', '$password')";
+	$sql = "DELETE FROM srequests WHERE requestid = $requestid";
 
 	if ($conn->query($sql) === TRUE) {
-		echo "New record created successfully";
+		echo "Request deleted successfully";
 		header("Refresh: 1; url=" . $_SERVER['HTTP_REFERER']);
 		header("Location: " . $_SERVER['HTTP_REFERER']);
 		exit;
