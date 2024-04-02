@@ -29,8 +29,16 @@
 								</div>
 
 								<div class="flex flexRow" style="gap: 10px;">
-									<button class="approveBtn">Accept</button>
-									<button class="rejectBtn">Reject</button>
+									<form action="/greenperch/api/lproperty_approve.php" method="POST">
+										<input type="hidden" name="id" value="'.$row['id'].'">
+										<input type="hidden" name="status" value="Approved">
+										<button type="submit" class="approveBtn">Accept</button>
+									</form>
+									<form action="/greenperch/api/lproperty_reject.php" method="POST">
+										<input type="hidden" name="id" value="'.$row['id'].'">
+										<input type="hidden" name="status" value="Rejected">
+										<button type="submit" class="rejectBtn">Reject</button>
+									</form>
 								</div>
 							</div>';
 						}
